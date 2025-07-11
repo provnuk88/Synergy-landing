@@ -300,107 +300,7 @@ export default function GamesPage() {
   }
 
   return (
-    <div className="bg-[#080F1A] text-[#DCEFFF] min-h-screen">
-      {/* Hero Section */}
-      <section className="relative h-screen w-full overflow-hidden">
-        {/* Aurora Background */}
-        <div className="aurora-bg absolute inset-0">
-          <div className="aurora-dot"></div>
-          <div className="aurora-dot"></div>
-          <div className="aurora-dot"></div>
-          <div className="aurora-dot"></div>
-        </div>
-
-        {/* Floating Particles */}
-        <div className="absolute inset-0 overflow-hidden">
-          {[...Array(30)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-2 h-2 bg-[#499FFF] rounded-full opacity-30 animate-pulse"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 3}s`,
-                animationDuration: `${2 + Math.random() * 2}s`,
-              }}
-            />
-          ))}
-        </div>
-
-        <div className="relative z-10 h-full flex items-center justify-center">
-          <div className="text-center space-y-8">
-            <h1 className="text-6xl md:text-8xl font-bold bg-gradient-to-r from-[#499FFF] via-white to-[#499FFF] bg-clip-text text-transparent animate-pulse">
-              Games
-            </h1>
-            <p className="text-2xl md:text-3xl text-[#DCEFFF]/80 max-w-4xl mx-auto">
-              Discover and master the best Web3 games with <span className="text-[#499FFF] font-semibold">Synergy Guild</span>
-            </p>
-            
-            {/* Filter Bar */}
-            <div className="flex flex-wrap items-center justify-center gap-4 mt-12 px-4">
-              <Button
-                variant={activeFilter === "all" ? "default" : "outline"}
-                onClick={() => setActiveFilter("all")}
-                className={activeFilter === "all" ? "bg-[#499FFF] text-white" : "border-[#499FFF] text-[#499FFF] hover:bg-[#499FFF] hover:text-white"}
-              >
-                All Games
-              </Button>
-              <Button
-                variant={activeFilter === "trending" ? "default" : "outline"}
-                onClick={() => setActiveFilter("trending")}
-                className={activeFilter === "trending" ? "bg-[#499FFF] text-white" : "border-[#499FFF] text-[#499FFF] hover:bg-[#499FFF] hover:text-white"}
-              >
-                🔥 Trending
-              </Button>
-              <Button
-                variant={activeFilter === "new" ? "default" : "outline"}
-                onClick={() => setActiveFilter("new")}
-                className={activeFilter === "new" ? "bg-[#499FFF] text-white" : "border-[#499FFF] text-[#499FFF] hover:bg-[#499FFF] hover:text-white"}
-              >
-                ✨ New
-              </Button>
-              
-              <Select value={selectedGenre} onValueChange={setSelectedGenre}>
-                <SelectTrigger className="w-40 border-[#499FFF] text-[#DCEFFF]">
-                  <SelectValue placeholder="Genre" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">All Genres</SelectItem>
-                  <SelectItem value="Action">Action</SelectItem>
-                  <SelectItem value="RPG">RPG</SelectItem>
-                  <SelectItem value="Strategy">Strategy</SelectItem>
-                  <SelectItem value="Card">Card</SelectItem>
-                  <SelectItem value="Simulation">Simulation</SelectItem>
-                </SelectContent>
-              </Select>
-
-              <Select value={selectedPlatform} onValueChange={setSelectedPlatform}>
-                <SelectTrigger className="w-40 border-[#499FFF] text-[#DCEFFF]">
-                  <SelectValue placeholder="Platform" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">All Platforms</SelectItem>
-                  <SelectItem value="PC">PC</SelectItem>
-                  <SelectItem value="Mobile">Mobile</SelectItem>
-                  <SelectItem value="Browser">Browser</SelectItem>
-                </SelectContent>
-              </Select>
-
-              <Select value={selectedBlockchain} onValueChange={setSelectedBlockchain}>
-                <SelectTrigger className="w-40 border-[#499FFF] text-[#DCEFFF]">
-                  <SelectValue placeholder="Blockchain" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">All Chains</SelectItem>
-                  <SelectItem value="ETH">Ethereum</SelectItem>
-                  <SelectItem value="Polygon">Polygon</SelectItem>
-                  <SelectItem value="BSC">BSC</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-          </div>
-        </div>
-      </section>
+    <div className="bg-[#080F1A] text-[#DCEFFF] min-h-screen pt-8">
 
       {/* Trending Games Carousel */}
       <section className="py-20 px-4 lg:px-6">
@@ -443,21 +343,6 @@ export default function GamesPage() {
         </div>
       </section>
 
-      {/* Search Bar */}
-      <section className="px-4 lg:px-6 mb-8">
-        <div className="container mx-auto">
-          <div className="relative max-w-md mx-auto">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#DCEFFF]/50 w-5 h-5" />
-            <Input
-              placeholder="Search games..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10 bg-white/5 border-white/10 text-[#DCEFFF] placeholder:text-[#DCEFFF]/50"
-            />
-          </div>
-        </div>
-      </section>
-
       {/* All Games Grid */}
       <section className="py-12 px-4 lg:px-6">
         <div className="container mx-auto">
@@ -480,63 +365,6 @@ export default function GamesPage() {
           )}
         </div>
       </section>
-
-      <style jsx>{`
-        @keyframes aurora-move {
-          0% { transform: translate(0, 0) rotate(0deg); opacity: 0.5; }
-          25% { transform: translate(20vw, -30vh) rotate(90deg); opacity: 0.8; }
-          50% { transform: translate(-25vw, 20vh) rotate(180deg); opacity: 0.6; }
-          75% { transform: translate(15vw, 35vh) rotate(270deg); opacity: 0.9; }
-          100% { transform: translate(0, 0) rotate(360deg); opacity: 0.5; }
-        }
-
-        .aurora-bg {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          overflow: hidden;
-          filter: blur(100px) brightness(0.8);
-        }
-
-        .aurora-dot {
-          position: absolute;
-          width: 40vw;
-          height: 40vw;
-          border-radius: 50%;
-          mix-blend-mode: screen;
-          animation: aurora-move 20s infinite;
-        }
-
-        .aurora-dot:nth-child(1) {
-          background-color: rgba(73, 159, 255, 0.3);
-          top: 10%;
-          left: 10%;
-          animation-duration: 22s;
-        }
-        .aurora-dot:nth-child(2) {
-          background-color: rgba(39, 75, 117, 0.4);
-          top: 20%;
-          left: 70%;
-          animation-duration: 25s;
-          animation-delay: -5s;
-        }
-        .aurora-dot:nth-child(3) {
-          background-color: rgba(220, 239, 255, 0.2);
-          top: 60%;
-          left: 5%;
-          animation-duration: 28s;
-          animation-delay: -10s;
-        }
-        .aurora-dot:nth-child(4) {
-          background-color: rgba(20, 30, 48, 0.5);
-          top: 70%;
-          left: 60%;
-          animation-duration: 20s;
-          animation-delay: -15s;
-        }
-      `}</style>
     </div>
   )
 }
