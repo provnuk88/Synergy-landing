@@ -246,7 +246,7 @@ export default function GamesPage() {
   const [selectedGenre, setSelectedGenre] = useState("all")
   const [selectedPlatform, setSelectedPlatform] = useState("all")
   const [selectedBlockchain, setSelectedBlockchain] = useState("all")
-  const [activeFilter, setActiveFilter] = useState("all")
+  const [activeFilter, setActiveFilter] = useState("trending")
 
   // Auto-play carousel
   useEffect(() => {
@@ -260,7 +260,10 @@ export default function GamesPage() {
   useEffect(() => {
     let filtered = allGames
 
-    if (activeFilter === "trending") {
+    // По умолчанию показываем trending игры
+    if (activeFilter === "all") {
+      filtered = allGames
+    } else if (activeFilter === "trending") {
       filtered = trendingGames
     } else if (activeFilter === "new") {
       filtered = allGames.filter(game => game.badge === "NEW")
